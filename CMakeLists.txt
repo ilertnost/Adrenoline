@@ -34,4 +34,10 @@ if(AL_BUILD_TESTS)
   target_link_libraries(al_home_test PRIVATE adrenoline)
   target_compile_options(al_home_test PRIVATE -Wall -Wextra -Werror)
   add_test(NAME home COMMAND al_home_test)
+
+  find_package(Python3 COMPONENTS Interpreter)
+  if(Python3_Interpreter_FOUND)
+    add_test(NAME img4tool
+             COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_img4tool.py)
+  endif()
 endif()
