@@ -9,6 +9,15 @@
 - A11 Bionic is Apple GPU family **Apple4**. Metal 2 shipped with it.
 - Apple's feature-set tables put Metal 3 at **A13 or later**. A11 therefore
   gets the Metal 2 API surface, not Metal 3.
+- The device tree of `20H392` for `D20AP` states it directly:
+
+  ```
+  graphics-featureset-class     = "APPLE4"
+  graphics-featureset-fallbacks = "APPLE3:APPLE3v1:APPLE2:APPLE1:GLES2,0"
+  ```
+
+  So the firmware itself settles both questions: Apple4, and no Metal 3
+  feature set anywhere in the fallback chain.
 - The userspace frameworks are fixed binaries. We cannot present them with a
   different "Metal version"; they are built once and shipped.
 - `AGXMetalA11.bundle` (`com.apple.AGXMetalA11`) is 3.3 MB of Apple GPU
