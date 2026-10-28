@@ -23,6 +23,8 @@ Only with an explicit, compatible licence, and only with attribution retained:
 | freedreno kernel tree | MIT | reuse, keep notice |
 | Apple open source (XNU, IOKit headers) | APSL-2.0 | reuse per APSL terms |
 | LLVM | Apache-2.0 WITH LLVM-exception | reuse |
+| UniXNU and its generic components (build driver, toolchain, `ArmDTPlatform`, `ArmCpu`, `RamBlock`, `DarwinBoot`) | BSD-2-Clause-Patent | reuse, keep notice; see ADR-0004 |
+| UniXNU device repositories (`chiron`, `cheeseburger`, ...) | per-repository | **reference only** — our board files are ours |
 | Qualcomm published kernel sources | GPL-2.0-only | **reference only** |
 
 ## 3. GPL-2.0-only is a hard boundary

@@ -74,9 +74,10 @@ Apple's prelinked components. No storage, no display, no GPU.
 
 ## Open questions
 
-- **RAM size.** `sagit` shipped with 4 and 6 GB. The device tree declares the
-  3.75 GiB window that the firmware itself advertises, which is valid on both;
-  the real map has to come from the UEFI memory map at handoff.
+- **RAM size.** The owner's unit has 6 GB. The device tree declares the
+  3.75 GiB window that the firmware itself advertises, which is safe but leaves
+  the rest unused; the real map has to come from the UEFI memory map at
+  handoff.
 - **Storage.** The Mi 6 uses eMMC (SDHCI), not the UFS controller that the
   other MSM8998 ports drive. Irrelevant for a ramdisk root, blocking for
   anything persistent.

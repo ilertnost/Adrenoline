@@ -10,9 +10,11 @@
 	#address-cells = <2>;
 	#size-cells = <2>;
 
-	// Conservative window that is valid on both the 4 GB and 6 GB variants and
-	// matches what the firmware advertises (0xF0000000 at 0x40000000). The
-	// bootloader extends it from the real UEFI memory map when it can.
+	// The owner's unit has 6 GB. This window is what the firmware itself
+	// advertises (PcdSystemMemorySize 0xF0000000 at 0x40000000), so it is safe
+	// but leaves memory above it unused. Extending it to the real top belongs in
+	// the loader, which can read the UEFI memory map; a guessed larger number
+	// here would let the kernel touch RAM that firmware has already reserved.
 	memory@40000000 {
 		device_type = "memory";
 		reg = <0x0 0x40000000 0x0 0xf0000000>;
