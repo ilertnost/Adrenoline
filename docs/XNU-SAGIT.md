@@ -36,7 +36,28 @@ sudo env TMPDIR=/data/opencode/tmp \
 ```
 
 Roughly an hour on sixteen cores, and the LLVM build tree alone is several GB,
-so both the prefix and `TMPDIR` belong on `/data`.
+so both the prefix and `TMPDIR` belong on `/data`. What it leaves behind:
+
+```
+llvm/bin/clang        clang 24.0.0git, 58c46bae, with __builtin_xnu_type_*
+CommandLineTools/usr  ld64-956.6, ar/otool/lipo/nm/libtool, migcom, xcrun shims
+bin/lzfse             kernelcache codec
+```
+
+The shims default to `/opt/unixnu-linux`; the build driver reads
+`UNIXNU_TOOLCHAIN` instead, so export it rather than relocating the prefix.
+
+## Version: iOS 17 by default, iOS 16 is the target
+
+The driver compiles XNU `10063.141.1` (the iOS 17 base) and passes
+`-target arm64-apple-ios17.0`; both are fixed in `scripts/unixnu/kernel.py`.
+That is fine for a first compile and link, and it is what chiron does.
+
+It is **not** fine for the real bring-up. 20H392 carries XNU **8796**, and the
+prelink step merges our kernel with the kexts of *that* kernelcache; a 10063
+source build does not match its ABI. Pinning `xnu-8796.101.5` and
+`arm64-apple-ios16.0` is therefore a prerequisite for anything beyond stage 1.
+
 
 ## Our board
 
