@@ -7,10 +7,19 @@ Ordered by what unblocks the most work per unit of effort.
 - [x] Public backend vtable and device caps
 - [x] NIR handoff representation
 - [x] Licence and provenance policy
-- [ ] Stub backend compiles clean on x86-64 and aarch64
-- [ ] Host test: registry, capability negotiation, teardown
+- [x] Stub backend compiles clean on x86-64
+- [x] Host test: registry, capability negotiation, teardown
+- [ ] Stub backend compiles clean on aarch64
 
-## M1 — Gallium reference backend
+## M1a — host shader toolchain
+
+- [x] Mesa 26.2.6 builds on host with a documented flag set (`docs/MESA-HOST.md`)
+- [x] GLSL 430 -> NIR verified (`tests/shaders/ca_like.frag`)
+- [x] Adreno 540 recognised by the freedreno noop DRM shim (`chip_id=0x5040002`)
+- [x] Confirmed `computerator` has no a5xx submission path
+- [ ] `tools/ir3a5xx`: NIR -> IR3 -> disassembly for FD540, offline
+
+## M1b — Gallium reference backend
 
 - [ ] Build Mesa freedreno for a5xx as a host library
 - [ ] NIR -> `pipe_context` translation for the compositor's pipeline shapes
