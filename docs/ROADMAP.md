@@ -28,7 +28,9 @@ Ordered by what unblocks the most work per unit of effort.
 
 ## M2 — Metal frontend (metal2nir)
 
-- [ ] AIR container parse (metallib -> per-function modules)
+- [x] AIR container parse (metallib -> per-function modules): `tools/mtlbinfo.py`
+- [x] Scope fixed by the real workload: 141 functions in QuartzCore's
+      `default.metallib` (`docs/CA-SHADER-INVENTORY.md`)
 - [ ] Function constants and specialisation
 - [ ] AIR -> NIR lowering for the compositor's known pipelines
 - [ ] MSL source path for development shaders

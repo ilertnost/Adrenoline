@@ -1,0 +1,1135 @@
+{
+  "file": "/data/opencode/ipsw/fs/20H392__iPhone10,1_4/root/System/Library/Frameworks/QuartzCore.framework/default.metallib",
+  "bytes": 1014944,
+  "declared_count": 141,
+  "records": [
+    {
+      "name": "std_vert0_lpf",
+      "kind": "vertex",
+      "size": 3504,
+      "hash": "8f342647e21f9288b617a9a6efdfadacd4f15887",
+      "record_size": 145,
+      "file_offset": 96
+    },
+    {
+      "name": "std_vert1_lpf",
+      "kind": "vertex",
+      "size": 3520,
+      "hash": "58b9bf46ca23c329bc36868faae5b1ab93c3db3c",
+      "record_size": 149,
+      "file_offset": 241
+    },
+    {
+      "name": "upsample_vert_lpf",
+      "kind": "vertex",
+      "size": 3632,
+      "hash": "accf8bce5ed96905c88e0a68cf87ff4951aa4176",
+      "record_size": 156,
+      "file_offset": 386
+    },
+    {
+      "name": "downsample_blur_vert_lpf",
+      "kind": "vertex",
+      "size": 3520,
+      "hash": "95bc2cf7590e37f7730e74b70f6ddfcc0e726bd8",
+      "record_size": 144,
+      "file_offset": 535
+    },
+    {
+      "name": "asg_vert_lpf",
+      "kind": "vertex",
+      "size": 3504,
+      "hash": "c1dc7ef53b3f4a14d6afb4fac6b502495d8a2f3c",
+      "record_size": 154,
+      "file_offset": 691
+    },
+    {
+      "name": "variable_blur_vert_lpf",
+      "kind": "vertex",
+      "size": 3552,
+      "hash": "7dc2dc935bc0e1d579356ee3bd381807d786c218",
+      "record_size": 153,
+      "file_offset": 835
+    },
+    {
+      "name": "path_cubic_vert_0_lpf",
+      "kind": "vertex",
+      "size": 5648,
+      "hash": "f419c94ca390ea175a2cdec74c90761ddf91fffe",
+      "record_size": 153,
+      "file_offset": 989
+    },
+    {
+      "name": "path_cubic_vert_1_lpf",
+      "kind": "vertex",
+      "size": 5648,
+      "hash": "a7503ef4505858d5edc71bbdbba690d8f29c9caa",
+      "record_size": 150,
+      "file_offset": 1142
+    },
+    {
+      "name": "path_rect_vert_lpf",
+      "kind": "vertex",
+      "size": 4384,
+      "hash": "f4fee3acc681a64c5bfa99367ee7aedb8498e0c9",
+      "record_size": 157,
+      "file_offset": 1295
+    },
+    {
+      "name": "path_stroke_line_vert_lpf",
+      "kind": "vertex",
+      "size": 4336,
+      "hash": "d0a2be1cb95532dfc2be4d7590a4070a82909f3e",
+      "record_size": 160,
+      "file_offset": 1445
+    },
+    {
+      "name": "path_stroke_curve_vert_0_lpf",
+      "kind": "vertex",
+      "size": 5536,
+      "hash": "70e4defda70e94425d66d09c7354fc17bc399dc1",
+      "record_size": 160,
+      "file_offset": 1602
+    },
+    {
+      "name": "path_stroke_curve_vert_1_lpf",
+      "kind": "vertex",
+      "size": 5552,
+      "hash": "4dfeb3d58de84cc5a8c5b019a363873a14a3547d",
+      "record_size": 163,
+      "file_offset": 1762
+    },
+    {
+      "name": "path_stroke_miter_join_vert_lpf",
+      "kind": "vertex",
+      "size": 5264,
+      "hash": "3e81ebdd0b81dbb9f963b4e8bbd9ee4f0826c516",
+      "record_size": 163,
+      "file_offset": 1922
+    },
+    {
+      "name": "path_stroke_round_join_vert_lpf",
+      "kind": "vertex",
+      "size": 4160,
+      "hash": "f02a3a505bb056e7edbf7f302be7fe6e7456f013",
+      "record_size": 150,
+      "file_offset": 2085
+    },
+    {
+      "name": "path_blit_vert_lpf",
+      "kind": "vertex",
+      "size": 3456,
+      "hash": "b5b1f4bfb77f02b47165d3e625befc1621b4e6fc",
+      "record_size": 158,
+      "file_offset": 2248
+    },
+    {
+      "name": "buffer_image_blit_vert_lpf",
+      "kind": "vertex",
+      "size": 4096,
+      "hash": "fc0094f90176ec58a73593986fb6b9ecb7fe0185",
+      "record_size": 152,
+      "file_offset": 2398
+    },
+    {
+      "name": "stroke_line_vert_lpf",
+      "kind": "vertex",
+      "size": 4400,
+      "hash": "3323ef4f6bfa90b60e60b109372a48b861946d79",
+      "record_size": 149,
+      "file_offset": 2556
+    },
+    {
+      "name": "upsample_frag_lpf",
+      "kind": "fragment",
+      "size": 4416,
+      "hash": "8265ea90dcdb6507239fe22c9a8330884816fba2",
+      "record_size": 153,
+      "file_offset": 2708
+    },
+    {
+      "name": "downsample_4_frag_lpf",
+      "kind": "fragment",
+      "size": 4176,
+      "hash": "a50b2729d700a891f56bbe8059c7f874c05b5f19",
+      "record_size": 153,
+      "file_offset": 2857
+    },
+    {
+      "name": "downsample_8_frag_lpf",
+      "kind": "fragment",
+      "size": 4832,
+      "hash": "afa04768a639f2570b2043f211b01f086cf06312",
+      "record_size": 153,
+      "file_offset": 3010
+    },
+    {
+      "name": "downsample_6_frag_lpf",
+      "kind": "fragment",
+      "size": 4128,
+      "hash": "8e82941d41e1d872de7c0c53536d4df805ec7368",
+      "record_size": 144,
+      "file_offset": 3163
+    },
+    {
+      "name": "asg_frag_lpf",
+      "kind": "fragment",
+      "size": 7008,
+      "hash": "92a4765bce6ed2096c506daeb5bcb66e3b45cb91",
+      "record_size": 147,
+      "file_offset": 3316
+    },
+    {
+      "name": "asg_75_frag_lpf",
+      "kind": "fragment",
+      "size": 5312,
+      "hash": "3cca26ffb847f42f7ea212b0e31d6ad8a5fc2c2d",
+      "record_size": 147,
+      "file_offset": 3460
+    },
+    {
+      "name": "asg_50_frag_lpf",
+      "kind": "fragment",
+      "size": 5504,
+      "hash": "6f3c9034429851a1d624e1bd2ca54e4997735e67",
+      "record_size": 158,
+      "file_offset": 3607
+    },
+    {
+      "name": "downsample_blur_2_frag_lpf",
+      "kind": "fragment",
+      "size": 4160,
+      "hash": "6e12be198200333030a6fe3b07d2f26ea8c024c2",
+      "record_size": 158,
+      "file_offset": 3754
+    },
+    {
+      "name": "downsample_blur_4_frag_lpf",
+      "kind": "fragment",
+      "size": 4464,
+      "hash": "e5795b6ede5a6afcfdcf9ce7ff7f8ef028295400",
+      "record_size": 154,
+      "file_offset": 3912
+    },
+    {
+      "name": "narrow_blur_7_frag_lpf",
+      "kind": "fragment",
+      "size": 4256,
+      "hash": "df3cf001e35c8bd565b15fe0cda9e00d29a1c13b",
+      "record_size": 155,
+      "file_offset": 4070
+    },
+    {
+      "name": "narrow_blur_11_frag_lpf",
+      "kind": "fragment",
+      "size": 4352,
+      "hash": "e583182cc6419eddf90787d5687a82e73e699197",
+      "record_size": 155,
+      "file_offset": 4224
+    },
+    {
+      "name": "narrow_blur_15_frag_lpf",
+      "kind": "fragment",
+      "size": 4448,
+      "hash": "7640400ed1a9d33b5a6ba3dceb5582153a3bb4a5",
+      "record_size": 155,
+      "file_offset": 4379
+    },
+    {
+      "name": "narrow_blur_19_frag_lpf",
+      "kind": "fragment",
+      "size": 4544,
+      "hash": "c2b2b0af7cb8201be74e9f20fea3ab2f17db949b",
+      "record_size": 155,
+      "file_offset": 4534
+    },
+    {
+      "name": "narrow_blur_23_frag_lpf",
+      "kind": "fragment",
+      "size": 4656,
+      "hash": "3ac55e6f26cf0a56225e9d9bde99e632afec18cf",
+      "record_size": 155,
+      "file_offset": 4689
+    },
+    {
+      "name": "narrow_blur_27_frag_lpf",
+      "kind": "fragment",
+      "size": 4752,
+      "hash": "4161757619eb4b30d7f4e984816edc150e310d8d",
+      "record_size": 154,
+      "file_offset": 4844
+    },
+    {
+      "name": "single_pass_blur_3_lpf",
+      "kind": "fragment",
+      "size": 4272,
+      "hash": "6e2a89efd1202a386d4515ea0290c3274d63c810",
+      "record_size": 165,
+      "file_offset": 4999
+    },
+    {
+      "name": "variable_blur_downsample_frag_lpf",
+      "kind": "fragment",
+      "size": 4160,
+      "hash": "668e7257f53fb810a88fe3774f60cfd75cbe5f7b",
+      "record_size": 154,
+      "file_offset": 5153
+    },
+    {
+      "name": "variable_blur_frag_lpf",
+      "kind": "fragment",
+      "size": 7200,
+      "hash": "0b293fa2ae32dfeec9f17b1f108e9e3a750d89e3",
+      "record_size": 154,
+      "file_offset": 5318
+    },
+    {
+      "name": "axial_shading_frag_lpf",
+      "kind": "fragment",
+      "size": 3728,
+      "hash": "615b784c6a9d543ec59ef996c6f2734c782918a7",
+      "record_size": 155,
+      "file_offset": 5472
+    },
+    {
+      "name": "radial_shading_frag_lpf",
+      "kind": "fragment",
+      "size": 4560,
+      "hash": "639bc899cb398e5e0871b2e8cab640c9d256532c",
+      "record_size": 163,
+      "file_offset": 5626
+    },
+    {
+      "name": "radial_complex_shading_frag_lpf",
+      "kind": "fragment",
+      "size": 5360,
+      "hash": "3fd8cef1929bfc8ac98232715aeca494d8207ac7",
+      "record_size": 154,
+      "file_offset": 5781
+    },
+    {
+      "name": "conic_shading_frag_lpf",
+      "kind": "fragment",
+      "size": 4400,
+      "hash": "0933d325ee9dbe177ec88a71e3f6e5a324be0e21",
+      "record_size": 151,
+      "file_offset": 5944
+    },
+    {
+      "name": "alpha_threshold_lpf",
+      "kind": "fragment",
+      "size": 4240,
+      "hash": "f7acef9c28fbb4e782b76f2d3cff464b4a09ea4b",
+      "record_size": 144,
+      "file_offset": 6098
+    },
+    {
+      "name": "p3_clamp_lpf",
+      "kind": "fragment",
+      "size": 4368,
+      "hash": "fad97cab8d4e12773ac7f16db62e674a82316ff7",
+      "record_size": 160,
+      "file_offset": 6249
+    },
+    {
+      "name": "alpha_linear_premultiply_lpf",
+      "kind": "fragment",
+      "size": 4048,
+      "hash": "9cb2bb28d7b6f076266c67fb777c2e49406699d4",
+      "record_size": 156,
+      "file_offset": 6393
+    },
+    {
+      "name": "home_affordance_base_lpf",
+      "kind": "fragment",
+      "size": 4704,
+      "hash": "030361ad5be42304ae9584b954de032d7373ab06",
+      "record_size": 145,
+      "file_offset": 6553
+    },
+    {
+      "name": "edr_scale_lpf",
+      "kind": "fragment",
+      "size": 4736,
+      "hash": "00fc49ff65bec938a92a76e23cba5418c1c75164",
+      "record_size": 143,
+      "file_offset": 6709
+    },
+    {
+      "name": "harmony_lpf",
+      "kind": "fragment",
+      "size": 4416,
+      "hash": "4bba886e9c714ec02375f4078b34b10da9ec03b2",
+      "record_size": 161,
+      "file_offset": 6854
+    },
+    {
+      "name": "display_overdrive_lut_gen_lpf",
+      "kind": "fragment",
+      "size": 4112,
+      "hash": "ceedc9c1f64450bc1d860141c658cbc22b7eb141",
+      "record_size": 163,
+      "file_offset": 6997
+    },
+    {
+      "name": "display_overdrive_linearize_lpf",
+      "kind": "fragment",
+      "size": 6128,
+      "hash": "fc1f4b428b66d6d7d597ef68895e2a2b5c4211bf",
+      "record_size": 166,
+      "file_offset": 7158
+    },
+    {
+      "name": "display_overdrive_srgb_sampler_lpf",
+      "kind": "fragment",
+      "size": 6000,
+      "hash": "08bfd48b078b8c83f49e0f9421da26f0cc860600",
+      "record_size": 146,
+      "file_offset": 7321
+    },
+    {
+      "name": "luma_boost_lpf",
+      "kind": "fragment",
+      "size": 4160,
+      "hash": "f859e62eb30c8e024ca36e3b7bf912f350780912",
+      "record_size": 151,
+      "file_offset": 7487
+    },
+    {
+      "name": "path_cubic_frag_lpf",
+      "kind": "fragment",
+      "size": 3648,
+      "hash": "5f0b54eab259ce176d70a1f3d572b1e3325e5719",
+      "record_size": 150,
+      "file_offset": 7633
+    },
+    {
+      "name": "path_rect_frag_lpf",
+      "kind": "fragment",
+      "size": 3312,
+      "hash": "a0ab16eb930843a41bf7e588a0a9138c8c558e63",
+      "record_size": 157,
+      "file_offset": 7784
+    },
+    {
+      "name": "path_stroke_line_frag_lpf",
+      "kind": "fragment",
+      "size": 3264,
+      "hash": "f152c8b6ef33436ed7623af1e98a6459218fe169",
+      "record_size": 158,
+      "file_offset": 7934
+    },
+    {
+      "name": "path_stroke_curve_frag_lpf",
+      "kind": "fragment",
+      "size": 3696,
+      "hash": "73780494950b020bc88f5dde3cf1da5f9986df9d",
+      "record_size": 163,
+      "file_offset": 8091
+    },
+    {
+      "name": "path_stroke_miter_join_frag_lpf",
+      "kind": "fragment",
+      "size": 3328,
+      "hash": "797d48b8fd2e9c20d8323b7f7a7069d02944890a",
+      "record_size": 163,
+      "file_offset": 8249
+    },
+    {
+      "name": "path_stroke_round_join_frag_lpf",
+      "kind": "fragment",
+      "size": 3856,
+      "hash": "dafea17e76d9877b0b8fd068d9113dbd35698184",
+      "record_size": 151,
+      "file_offset": 8412
+    },
+    {
+      "name": "path_clear_frag_lpf",
+      "kind": "fragment",
+      "size": 2800,
+      "hash": "435e0fbaf3efb34ca4b656a7a8e82a5253c98ebb",
+      "record_size": 150,
+      "file_offset": 8575
+    },
+    {
+      "name": "path_blit_frag_lpf",
+      "kind": "fragment",
+      "size": 3424,
+      "hash": "dd809bdad22f5218e92b31cc32be5eaadb643266",
+      "record_size": 153,
+      "file_offset": 8726
+    },
+    {
+      "name": "path_blit_frag_eo_lpf",
+      "kind": "fragment",
+      "size": 3488,
+      "hash": "6c3c85fd508e1af5709bcc6b9fcd52999b716739",
+      "record_size": 158,
+      "file_offset": 8876
+    },
+    {
+      "name": "buffer_image_blit_frag_lpf",
+      "kind": "fragment",
+      "size": 3920,
+      "hash": "8b36a1cda136a98088bf5c4d9d1a365b4d487094",
+      "record_size": 157,
+      "file_offset": 9029
+    },
+    {
+      "name": "attachment_clear_frag_lpf",
+      "kind": "fragment",
+      "size": 2848,
+      "hash": "82de7380f172ae350423265ef2c8de43ee3f2677",
+      "record_size": 148,
+      "file_offset": 9187
+    },
+    {
+      "name": "inplace_copy_lpf",
+      "kind": "fragment",
+      "size": 3392,
+      "hash": "0e4189bd7eca8e660c4f58b419238e6521e3d9d4",
+      "record_size": 152,
+      "file_offset": 9344
+    },
+    {
+      "name": "stroke_line_frag_lpf",
+      "kind": "fragment",
+      "size": 3360,
+      "hash": "f0bf911e90ff1981165be6302ff41f354580c37f",
+      "record_size": 153,
+      "file_offset": 9492
+    },
+    {
+      "name": "apply_apl_dimming_lpf",
+      "kind": "fragment",
+      "size": 4080,
+      "hash": "85239095ab4ba1d101bcfcdbd8b3da48cdce54f5",
+      "record_size": 150,
+      "file_offset": 9644
+    },
+    {
+      "name": "fixed_vert_lph_spc",
+      "kind": "vertex",
+      "size": 8304,
+      "hash": "85b44077954f972284ac92e245da619cad0fb0f4",
+      "record_size": 150,
+      "file_offset": 9797
+    },
+    {
+      "name": "fixed_vert_lph_gen",
+      "kind": "vertex",
+      "size": 9616,
+      "hash": "6fc718dafd65f75c8b615b8c77e269ac8ea01fcc",
+      "record_size": 150,
+      "file_offset": 9947
+    },
+    {
+      "name": "fixed_vert_lpf_spc",
+      "kind": "vertex",
+      "size": 8288,
+      "hash": "0b578c1a82e67952683a517d0b3e849fc7279f6e",
+      "record_size": 150,
+      "file_offset": 10097
+    },
+    {
+      "name": "fixed_vert_lpf_gen",
+      "kind": "vertex",
+      "size": 9712,
+      "hash": "c1a0b5ffe722c0bd89f650c4031f321b91ef7249",
+      "record_size": 150,
+      "file_offset": 10247
+    },
+    {
+      "name": "fixed_frag_lph_cph",
+      "kind": "fragment",
+      "size": 103728,
+      "hash": "222614d254d301f672dc3d0c86ced8eecb34de8f",
+      "record_size": 150,
+      "file_offset": 10397
+    },
+    {
+      "name": "fixed_frag_lph_cpf",
+      "kind": "fragment",
+      "size": 104384,
+      "hash": "d14fdf01ff9d3aa912842c6a9e4f9fdac98885c6",
+      "record_size": 143,
+      "file_offset": 10547
+    },
+    {
+      "name": "compute_apl",
+      "kind": "kernel",
+      "size": 5360,
+      "hash": "0a4bdd0d6d76bbe6c60ee478cbb89878644e4e9b",
+      "record_size": 148,
+      "file_offset": 10697
+    },
+    {
+      "name": "compute_apl_fast",
+      "kind": "kernel",
+      "size": 5728,
+      "hash": "86738a266ed1afaef757d66c50f409b7ce672e65",
+      "record_size": 166,
+      "file_offset": 10840
+    },
+    {
+      "name": "sum_apl_and_compute_dimming_factor",
+      "kind": "kernel",
+      "size": 5152,
+      "hash": "c62f11a8bb241d4728fed8d867b8021b92ff955d",
+      "record_size": 149,
+      "file_offset": 10988
+    },
+    {
+      "name": "tile_downsample_1",
+      "kind": "kernel",
+      "size": 3792,
+      "hash": "2eb72e3223d347015f916f7924d03ede401d9c31",
+      "record_size": 149,
+      "file_offset": 11154
+    },
+    {
+      "name": "tile_downsample_2",
+      "kind": "kernel",
+      "size": 3872,
+      "hash": "61a768a10d17bcf7b3c6a161ce5434e8fcbfc1ce",
+      "record_size": 149,
+      "file_offset": 11303
+    },
+    {
+      "name": "tile_downsample_4",
+      "kind": "kernel",
+      "size": 4096,
+      "hash": "cbbe127487121aa3eafa87373ab2e4a29c6d127c",
+      "record_size": 149,
+      "file_offset": 11452
+    },
+    {
+      "name": "tile_downsample_8",
+      "kind": "kernel",
+      "size": 4528,
+      "hash": "da49467e59620a7053eada573bdb6a515973dc3d",
+      "record_size": 145,
+      "file_offset": 11601
+    },
+    {
+      "name": "std_vert0_lph",
+      "kind": "vertex",
+      "size": 3504,
+      "hash": "2bf76168fb9361a54f0b1d70881e1e56949e1123",
+      "record_size": 145,
+      "file_offset": 11750
+    },
+    {
+      "name": "std_vert1_lph",
+      "kind": "vertex",
+      "size": 3536,
+      "hash": "749649f38cc36a3fd556b6bd5bc3523669d8070f",
+      "record_size": 149,
+      "file_offset": 11895
+    },
+    {
+      "name": "upsample_vert_lph",
+      "kind": "vertex",
+      "size": 3648,
+      "hash": "2e09671d6df9770e3f14a2165784839cdf58d631",
+      "record_size": 156,
+      "file_offset": 12040
+    },
+    {
+      "name": "downsample_blur_vert_lph",
+      "kind": "vertex",
+      "size": 3536,
+      "hash": "63c1c1fefa80cf6250c62af1e029a1329522d97c",
+      "record_size": 144,
+      "file_offset": 12189
+    },
+    {
+      "name": "asg_vert_lph",
+      "kind": "vertex",
+      "size": 3520,
+      "hash": "0c8572721af216571dd97a759291fc6b8c9cab8b",
+      "record_size": 154,
+      "file_offset": 12345
+    },
+    {
+      "name": "variable_blur_vert_lph",
+      "kind": "vertex",
+      "size": 3552,
+      "hash": "5397b32688a4885f8209044bede3737b29d71ee6",
+      "record_size": 153,
+      "file_offset": 12489
+    },
+    {
+      "name": "path_cubic_vert_0_lph",
+      "kind": "vertex",
+      "size": 5648,
+      "hash": "be5c58d413e2f6373fd3e2ae4b48c7d69d57309c",
+      "record_size": 153,
+      "file_offset": 12643
+    },
+    {
+      "name": "path_cubic_vert_1_lph",
+      "kind": "vertex",
+      "size": 5648,
+      "hash": "2978bc1c8bcaa35b44e3e9585a2702bb6ae38cca",
+      "record_size": 150,
+      "file_offset": 12796
+    },
+    {
+      "name": "path_rect_vert_lph",
+      "kind": "vertex",
+      "size": 4384,
+      "hash": "1c4dd19e446eb7f526472c414e82ed388ad59033",
+      "record_size": 157,
+      "file_offset": 12949
+    },
+    {
+      "name": "path_stroke_line_vert_lph",
+      "kind": "vertex",
+      "size": 4336,
+      "hash": "845c8ffeee8ba5d13261012066b0fc3b10199501",
+      "record_size": 160,
+      "file_offset": 13099
+    },
+    {
+      "name": "path_stroke_curve_vert_0_lph",
+      "kind": "vertex",
+      "size": 5536,
+      "hash": "bdf41594a83f7575075f7b89acb9774cfd7fb63f",
+      "record_size": 160,
+      "file_offset": 13256
+    },
+    {
+      "name": "path_stroke_curve_vert_1_lph",
+      "kind": "vertex",
+      "size": 5552,
+      "hash": "8a91d3faf8a5690e22aea3a74ab8b9ce554f10ce",
+      "record_size": 163,
+      "file_offset": 13416
+    },
+    {
+      "name": "path_stroke_miter_join_vert_lph",
+      "kind": "vertex",
+      "size": 5264,
+      "hash": "4dc036560502950ca404a78af8bfd12526a7939c",
+      "record_size": 163,
+      "file_offset": 13576
+    },
+    {
+      "name": "path_stroke_round_join_vert_lph",
+      "kind": "vertex",
+      "size": 4160,
+      "hash": "91e2af55f88c80c993d211a201c362940f422b59",
+      "record_size": 150,
+      "file_offset": 13739
+    },
+    {
+      "name": "path_blit_vert_lph",
+      "kind": "vertex",
+      "size": 3456,
+      "hash": "b4933d4f85dc4a3ed9e06e88f2d1420275377a8c",
+      "record_size": 158,
+      "file_offset": 13902
+    },
+    {
+      "name": "buffer_image_blit_vert_lph",
+      "kind": "vertex",
+      "size": 4128,
+      "hash": "97ae11a368afd6304987c484fe1f868237be3aea",
+      "record_size": 152,
+      "file_offset": 14052
+    },
+    {
+      "name": "stroke_line_vert_lph",
+      "kind": "vertex",
+      "size": 4496,
+      "hash": "113e05e1db9fc845bf81d33b04e4c3922d8f5841",
+      "record_size": 146,
+      "file_offset": 14210
+    },
+    {
+      "name": "read_surf_vert",
+      "kind": "vertex",
+      "size": 2896,
+      "hash": "9fb5aafbf597ffb732077b2b95b50228446f1a17",
+      "record_size": 149,
+      "file_offset": 14362
+    },
+    {
+      "name": "upsample_frag_lph",
+      "kind": "fragment",
+      "size": 4512,
+      "hash": "9a4bedfa40e2a2da29f7615018d13e8e81813799",
+      "record_size": 153,
+      "file_offset": 14508
+    },
+    {
+      "name": "downsample_4_frag_lph",
+      "kind": "fragment",
+      "size": 4192,
+      "hash": "e4b6e2fb3916b97e5b16d1ebb730935d235fa6f3",
+      "record_size": 153,
+      "file_offset": 14657
+    },
+    {
+      "name": "downsample_8_frag_lph",
+      "kind": "fragment",
+      "size": 4832,
+      "hash": "a8c4f8a70ab9b0faf21d960097780786481901b0",
+      "record_size": 153,
+      "file_offset": 14810
+    },
+    {
+      "name": "downsample_6_frag_lph",
+      "kind": "fragment",
+      "size": 4128,
+      "hash": "ba53ac6e02a823b65e0ac09a1d95d2d456f64339",
+      "record_size": 144,
+      "file_offset": 14963
+    },
+    {
+      "name": "asg_frag_lph",
+      "kind": "fragment",
+      "size": 7024,
+      "hash": "bb3ac8765ea805162daa0c1925ecfbfe66977692",
+      "record_size": 147,
+      "file_offset": 15116
+    },
+    {
+      "name": "asg_75_frag_lph",
+      "kind": "fragment",
+      "size": 5392,
+      "hash": "2b7189259c19eb442484ab003c7cae7c0a1f83b7",
+      "record_size": 147,
+      "file_offset": 15260
+    },
+    {
+      "name": "asg_50_frag_lph",
+      "kind": "fragment",
+      "size": 5456,
+      "hash": "25f53f0a96d65b0677b3324f1c3bd2d1b21180ea",
+      "record_size": 158,
+      "file_offset": 15407
+    },
+    {
+      "name": "downsample_blur_2_frag_lph",
+      "kind": "fragment",
+      "size": 4176,
+      "hash": "ba51d6ef654fefe7278c151cb7a7171cc273e432",
+      "record_size": 158,
+      "file_offset": 15554
+    },
+    {
+      "name": "downsample_blur_4_frag_lph",
+      "kind": "fragment",
+      "size": 4464,
+      "hash": "575361fd6175e486b7377cc5f4be79c4d3dec77f",
+      "record_size": 154,
+      "file_offset": 15712
+    },
+    {
+      "name": "narrow_blur_7_frag_lph",
+      "kind": "fragment",
+      "size": 4256,
+      "hash": "507c881896827eabec9fc9652264b4e63c835593",
+      "record_size": 155,
+      "file_offset": 15870
+    },
+    {
+      "name": "narrow_blur_11_frag_lph",
+      "kind": "fragment",
+      "size": 4352,
+      "hash": "cae8a5ccc986e2a6ed159c16f22638ee0f1a3e86",
+      "record_size": 155,
+      "file_offset": 16024
+    },
+    {
+      "name": "narrow_blur_15_frag_lph",
+      "kind": "fragment",
+      "size": 4448,
+      "hash": "efa4d0f423a09dcffadd0a7cf5a0cf01a9ececad",
+      "record_size": 155,
+      "file_offset": 16179
+    },
+    {
+      "name": "narrow_blur_19_frag_lph",
+      "kind": "fragment",
+      "size": 4560,
+      "hash": "def7877d60515ebfe8bce71dd0db8957e789826f",
+      "record_size": 155,
+      "file_offset": 16334
+    },
+    {
+      "name": "narrow_blur_23_frag_lph",
+      "kind": "fragment",
+      "size": 4656,
+      "hash": "73fd5970f302b18fb2eb3e82f8311266e4ecb414",
+      "record_size": 155,
+      "file_offset": 16489
+    },
+    {
+      "name": "narrow_blur_27_frag_lph",
+      "kind": "fragment",
+      "size": 4752,
+      "hash": "bc69a71d06d4501bb9f7d82275d95bd3aba20f2d",
+      "record_size": 154,
+      "file_offset": 16644
+    },
+    {
+      "name": "single_pass_blur_3_lph",
+      "kind": "fragment",
+      "size": 4272,
+      "hash": "f109619ac4491525423d4cd09a3a0aaefbd088a8",
+      "record_size": 165,
+      "file_offset": 16799
+    },
+    {
+      "name": "variable_blur_downsample_frag_lph",
+      "kind": "fragment",
+      "size": 4176,
+      "hash": "b42c9e1ebb4cccc4d862d393093370ce77ee7a59",
+      "record_size": 154,
+      "file_offset": 16953
+    },
+    {
+      "name": "variable_blur_frag_lph",
+      "kind": "fragment",
+      "size": 7312,
+      "hash": "b462ee23bea2364eb75f6a29cad591a35963d656",
+      "record_size": 154,
+      "file_offset": 17118
+    },
+    {
+      "name": "axial_shading_frag_lph",
+      "kind": "fragment",
+      "size": 3744,
+      "hash": "5d05b576c245e6d4793617cbe0250bc60e7d10f9",
+      "record_size": 155,
+      "file_offset": 17272
+    },
+    {
+      "name": "radial_shading_frag_lph",
+      "kind": "fragment",
+      "size": 4560,
+      "hash": "71b1ec977db35dc9e36f0d619ad9a713b8fd5ecf",
+      "record_size": 163,
+      "file_offset": 17426
+    },
+    {
+      "name": "radial_complex_shading_frag_lph",
+      "kind": "fragment",
+      "size": 5376,
+      "hash": "3138908298a6414e85ba1aea71704da305c99f96",
+      "record_size": 154,
+      "file_offset": 17581
+    },
+    {
+      "name": "conic_shading_frag_lph",
+      "kind": "fragment",
+      "size": 4416,
+      "hash": "14699b74e988a02cc13c66038d76ab73158f62be",
+      "record_size": 151,
+      "file_offset": 17744
+    },
+    {
+      "name": "alpha_threshold_lph",
+      "kind": "fragment",
+      "size": 4240,
+      "hash": "6c934804c9763b958e3090c4d1c13a034103ad1b",
+      "record_size": 144,
+      "file_offset": 17898
+    },
+    {
+      "name": "p3_clamp_lph",
+      "kind": "fragment",
+      "size": 4208,
+      "hash": "7af8cea163758c87da879705b5f86e3639498285",
+      "record_size": 160,
+      "file_offset": 18049
+    },
+    {
+      "name": "alpha_linear_premultiply_lph",
+      "kind": "fragment",
+      "size": 3936,
+      "hash": "e15521bc345c2b9f12984f514c4549640095e4dc",
+      "record_size": 156,
+      "file_offset": 18193
+    },
+    {
+      "name": "home_affordance_base_lph",
+      "kind": "fragment",
+      "size": 4688,
+      "hash": "23dba4bdec7c631c41d1c462a36906b2a189be1c",
+      "record_size": 145,
+      "file_offset": 18353
+    },
+    {
+      "name": "edr_scale_lph",
+      "kind": "fragment",
+      "size": 4624,
+      "hash": "a5546a4328c9ad0c34988d1ee6a1068054bcbb45",
+      "record_size": 143,
+      "file_offset": 18509
+    },
+    {
+      "name": "harmony_lph",
+      "kind": "fragment",
+      "size": 4272,
+      "hash": "91bbe3711d1b9a80acaf3c9ad92a1abacd49bcdd",
+      "record_size": 161,
+      "file_offset": 18654
+    },
+    {
+      "name": "display_overdrive_lut_gen_lph",
+      "kind": "fragment",
+      "size": 4128,
+      "hash": "8105760b641727809f33e55eaf03694140eae21b",
+      "record_size": 163,
+      "file_offset": 18797
+    },
+    {
+      "name": "display_overdrive_linearize_lph",
+      "kind": "fragment",
+      "size": 5984,
+      "hash": "576a28c089c59e33d277d6ec9a1a1de85ed3175d",
+      "record_size": 166,
+      "file_offset": 18958
+    },
+    {
+      "name": "display_overdrive_srgb_sampler_lph",
+      "kind": "fragment",
+      "size": 5872,
+      "hash": "f4c54d4ebe38fd12bee97108382c5bf2d36e94de",
+      "record_size": 146,
+      "file_offset": 19121
+    },
+    {
+      "name": "luma_boost_lph",
+      "kind": "fragment",
+      "size": 4176,
+      "hash": "5a5ce38a5ddb3916f1c531d83df314866b64e209",
+      "record_size": 151,
+      "file_offset": 19287
+    },
+    {
+      "name": "path_cubic_frag_lph",
+      "kind": "fragment",
+      "size": 3648,
+      "hash": "fe95bd44acadb8806b966cb534fb48adc6824eb3",
+      "record_size": 150,
+      "file_offset": 19433
+    },
+    {
+      "name": "path_rect_frag_lph",
+      "kind": "fragment",
+      "size": 3312,
+      "hash": "465e916544ceea84d0aa4c565a2092ea46d2a165",
+      "record_size": 157,
+      "file_offset": 19584
+    },
+    {
+      "name": "path_stroke_line_frag_lph",
+      "kind": "fragment",
+      "size": 3264,
+      "hash": "9bd86b6862564adba7e2f3cf044d400959f8bf32",
+      "record_size": 158,
+      "file_offset": 19734
+    },
+    {
+      "name": "path_stroke_curve_frag_lph",
+      "kind": "fragment",
+      "size": 3696,
+      "hash": "62bbcf0fde5534cc9396adab267a2721448fe0d9",
+      "record_size": 163,
+      "file_offset": 19891
+    },
+    {
+      "name": "path_stroke_miter_join_frag_lph",
+      "kind": "fragment",
+      "size": 3328,
+      "hash": "5cd4dd5e81d20276260bfb6307ed542dbc0ea2ba",
+      "record_size": 163,
+      "file_offset": 20049
+    },
+    {
+      "name": "path_stroke_round_join_frag_lph",
+      "kind": "fragment",
+      "size": 3856,
+      "hash": "84047acb0d1127dd89480907e5eb2c0f2dc1bad0",
+      "record_size": 151,
+      "file_offset": 20212
+    },
+    {
+      "name": "path_clear_frag_lph",
+      "kind": "fragment",
+      "size": 2800,
+      "hash": "fdebebda0d3b2b0e3aba22866d760194def87ee9",
+      "record_size": 150,
+      "file_offset": 20375
+    },
+    {
+      "name": "path_blit_frag_lph",
+      "kind": "fragment",
+      "size": 3424,
+      "hash": "d9e3f9827a10392fd2c2070ecdf69ca8412339fe",
+      "record_size": 153,
+      "file_offset": 20526
+    },
+    {
+      "name": "path_blit_frag_eo_lph",
+      "kind": "fragment",
+      "size": 3472,
+      "hash": "46a1c15b2bca3f5cee604e6ec63aa1c5486755f3",
+      "record_size": 158,
+      "file_offset": 20676
+    },
+    {
+      "name": "buffer_image_blit_frag_lph",
+      "kind": "fragment",
+      "size": 3936,
+      "hash": "3365617a7b7bde78e7fdd7f3250a22730e1a8e41",
+      "record_size": 157,
+      "file_offset": 20829
+    },
+    {
+      "name": "attachment_clear_frag_lph",
+      "kind": "fragment",
+      "size": 2848,
+      "hash": "a7957c973fe9abb8933d19478cad9c1b9aa08662",
+      "record_size": 148,
+      "file_offset": 20987
+    },
+    {
+      "name": "inplace_copy_lph",
+      "kind": "fragment",
+      "size": 3408,
+      "hash": "ba7be8af9ee6571418a5b281575b46f3c004e56a",
+      "record_size": 152,
+      "file_offset": 21144
+    },
+    {
+      "name": "stroke_line_frag_lph",
+      "kind": "fragment",
+      "size": 3376,
+      "hash": "6645c91269c2f367326a7bad0dcbb16895cdac9f",
+      "record_size": 153,
+      "file_offset": 21292
+    },
+    {
+      "name": "apply_apl_dimming_lph",
+      "kind": "fragment",
+      "size": 4112,
+      "hash": "5092b012eab5e892e749d692d92ef1fe6de1924f",
+      "record_size": 146,
+      "file_offset": 21444
+    },
+    {
+      "name": "read_surf_frag",
+      "kind": "fragment",
+      "size": 3216,
+      "hash": "f82db7166262a209c3ddf7cd8a32e241e4473a16",
+      "record_size": 1414745170,
+      "file_offset": 21597
+    }
+  ]
+}
