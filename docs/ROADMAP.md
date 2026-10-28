@@ -1,0 +1,47 @@
+# Roadmap
+
+Ordered by what unblocks the most work per unit of effort.
+
+## M0 — seam and contract
+
+- [x] Public backend vtable and device caps
+- [x] NIR handoff representation
+- [x] Licence and provenance policy
+- [ ] Stub backend compiles clean on x86-64 and aarch64
+- [ ] Host test: registry, capability negotiation, teardown
+
+## M1 — Gallium reference backend
+
+- [ ] Build Mesa freedreno for a5xx as a host library
+- [ ] NIR -> `pipe_context` translation for the compositor's pipeline shapes
+- [ ] Offscreen render to an IOSurface-shaped buffer
+- [ ] Pixel-exact reference images checked into `tests/ref/`
+
+## M2 — Metal frontend (metal2nir)
+
+- [ ] AIR container parse (metallib -> per-function modules)
+- [ ] Function constants and specialisation
+- [ ] AIR -> NIR lowering for the compositor's known pipelines
+- [ ] MSL source path for development shaders
+- [ ] AOT catalog: compile once, cache by pipeline key
+
+## M3 — native PM4 backend
+
+- [ ] SMMU 4 KiB context, command ring, MAU/fence
+- [ ] State packets for the pipeline shapes from M2
+- [ ] Draw and blit paths
+- [ ] Diff against M1 reference images, byte for byte
+- [ ] Switch default backend when the diff is clean
+
+## M4 — integration
+
+- [ ] Backend selection at runtime
+- [ ] Fence and residency semantics matching Metal expectations
+- [ ] Frame pacing: measure the CPU side, which is the actual limiter
+
+## Non-goals
+
+- Vulkan
+- SPIR-V
+- Turnip
+- Any dependency on unlicensed third-party source
