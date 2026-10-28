@@ -10,6 +10,7 @@ endif()
 add_library(adrenoline STATIC
   src/core/status.c
   src/core/backend_registry.c
+  src/home/home.c
   backends/stub/stub_backend.c
 )
 
@@ -28,4 +29,9 @@ if(AL_BUILD_TESTS)
   target_link_libraries(al_smoke PRIVATE adrenoline)
   target_compile_options(al_smoke PRIVATE -Wall -Wextra -Werror)
   add_test(NAME smoke COMMAND al_smoke)
+
+  add_executable(al_home_test tests/test_home.c)
+  target_link_libraries(al_home_test PRIVATE adrenoline)
+  target_compile_options(al_home_test PRIVATE -Wall -Wextra -Werror)
+  add_test(NAME home COMMAND al_home_test)
 endif()
