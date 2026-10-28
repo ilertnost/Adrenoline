@@ -12,6 +12,15 @@ kit = "sagit"
 
 [kernel]
 defconfig = "sagit_defconfig"
+# Built after the compile records exist, in this order. Source crypto, pthread
+# and the mock filesystem are what make a storage-less kernel linkable; the
+# namespaced corecrypto pass must follow the plain one.
+archives = [
+  "build-libpthread-kernel.py",
+  "build-corecrypto-14.py",
+  "build-corecrypto-14.py --namespace",
+  "build-mockfs-fixture.py",
+]
 
 [bootimg.image]
 header_version = 1
