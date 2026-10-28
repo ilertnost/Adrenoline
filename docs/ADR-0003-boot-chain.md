@@ -70,7 +70,44 @@ Responsibilities are split so that the licences stay clean:
 - The stock Android boot image is preserved before the first write, so the
   phone can always be returned to a working state with `fastboot flash boot`.
 
+## Revision (same day) — the platform already exists
+
+The first version of this ADR assumed the Mi 6 platform layer had to be written.
+It does not. `edk2-porting/edk2-msm8998` is a public EDK2 firmware for Snapdragon
+835, and it ships `Platforms/Msm8998Pkg/Device/xiaomi/sagit` — Mi 6 support is
+**upstream there**, not something we have to invent.
+
+What that changes:
+
+- The platform description (memory map, TLMM, PM8998, UFS, panel) is **not ours
+  to write**. We use it, unmodified where possible.
+- The platform code carries BSD headers ("licensed and made available under the
+  terms and conditions of the BSD License"), which is GPL-compatible.
+- One component is not: `GPLDrivers/Library/simple-init` (BigfootACA/simple-init,
+  GPL-2.0-only) is pulled into `sagit.fdf` via `INF src/main/SimpleInitMain.inf`.
+  GPL-2.0-only is not compatible with GPL-3.0-or-later, so it must be **excluded**
+  from our build. We do not need it: it exists to chain-load Linux, and we chain
+  load XNU.
+
+So the split becomes:
+
+| layer | who writes it | licence |
+|---|---|---|
+| EDK2 core | upstream tianocore | BSD-2 |
+| msm8998 + sagit platform | `edk2-porting/edk2-msm8998` | BSD |
+| simple-init | **excluded** | GPL-2.0-only |
+| XNU bridge | us | GPL-3.0-or-later |
+| graphics stack | us | GPL-3.0-or-later |
+
+The first milestone is unchanged, and it just got much cheaper: **upstream EDK2
+reaching its shell on the phone's display**. No custom code at all.
+
+The bridge remains entirely ours, and it is now the first thing we write rather
+than the second.
+
 ## Open questions
+
+
 
 - Whether ABL on this firmware actually passes a usable device tree in `x0`, or
   whether we have to synthesise the platform description ourselves.
