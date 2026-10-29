@@ -45,6 +45,37 @@ Two patches, both build fixes for a modern GCC, neither touching behaviour:
   BaseTools are K&R-era C in `Pccts`, and GCC 14+ makes those constructs hard
   errors.
 
+## Local changes
+
+The pinned core is January 2023. Two things have to be added before the UniXNU
+boot manager and the DarwinBoot loader will build against it, and neither can be
+fixed from a DSC:
+
+- `MdePkg/Include/Guid/Fdt.h`, `MdePkg/Include/Library/FdtLib.h` and
+  `MdePkg/Library/BaseFdtLib` (with `libfdt`) — the 2023 FDT API
+  (`FdtCheckHeader`, `FdtSetProp`, `FdtOverlayApply`, `Fdt32ToCpu`, …). The
+  tree only has `EmbeddedPkg`'s older lowercase `fdt_*` library.
+- `gFdtTableGuid`, which those headers reference and `MdePkg.dec` does not
+  declare.
+
+`tools/apply-edk2-unixnu-overlay.sh` copies exactly those items from the Mu
+core checkout that the UniXNU fetch already puts on disk
+(`out/feeds/mu_basecore-*`, `release/202608`, BSD-2-Clause-Patent), appends the
+two `MdePkg.dec` entries, and wires the device DSC and FDF. It is idempotent and
+touches nothing else in the pinned core; `tools/build-sagit-edk2.sh` runs it
+before every build.
+
+`ArmPkg/Include/AsmMacroLib.h` needs a note. Upstream Mu keeps it at
+`MdePkg/Include/AArch64/`, and it uses `_ASM_TYPE` and `AARCH64_BTI`, which a
+newer `ProcessorBind.h` defines and the pinned one does not. The overlay
+installs the file under `ArmPkg/Include` (where DarwinBoot's `Entry.S` looks for
+it) and appends a marked fallback block guarded by `#ifndef`, so it is a no-op on
+any newer core.
+
+The vendored packages themselves are never edited. Where a module needs the new
+FDT library and the rest of the platform needs the old one, the DSC gives a
+per-module `<LibraryClasses>` override instead of changing the global mapping.
+
 ## Build
 
 ```sh
@@ -89,6 +120,21 @@ an official Mi 6 fastboot ROM; it has to be on hand before the first write.
 ## Where this leaves the chain
 
 The firmware boots, the platform is upstream, and the image is reproducible.
-What is still missing between this and XNU is ours alone: a DXE driver that
-patches the device tree and starts the kernel. That is also the first piece of
-the project that has to live in this repository rather than upstream.
+Inside the main firmware volume now sit four modules from UniXNU
+(BSD-2-Clause-Patent, read-only inputs):
+
+| module | role |
+|---|---|
+| `UniXNUDxe` | boot manager: registers the UniXNU application as the first boot option |
+| `UniXNU` | the menu application and the configuration it reads |
+| `UniXNURamDiskDxe` | publishes a ramdisk handed over in the device tree |
+| `DarwinBoot` | produces `gUniXNULoaderProtocolGuid` and loads a prelinked XNU Mach-O |
+
+Sizes on the integrated image: FD unchanged at 6 291 456 B, the compressed
+volume at 5 649 408 of 6 258 688 (609 280 B free), and the boot image at
+11 104 256 B with the same `ANDROID!` v1, 2048-byte page and `0x10000000` kernel
+address as before.
+
+What is still missing between this and a running XNU is the part that has to be
+ours: the configuration entry that points DarwinBoot at our kernel, and the
+device tree it hands over.

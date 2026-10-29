@@ -16,6 +16,13 @@ ROOT=${ROOT:-/data/opencode/edk2-msm8998}
 TOOLCHAIN=${TOOLCHAIN:-/data/opencode/toolchains/arm-gnu-toolchain-13.2.Rel1-x86_64-aarch64-none-linux-gnu}
 DEVICE=${DEVICE:-sagit}
 MODE=${MODE:-RELEASE}
+UNIXNU_SRC=${UNIXNU_SRC:-/data/opencode/unixnu-src}
+MU_BASECORE=${MU_BASECORE:-$UNIXNU_SRC/out/feeds/mu_basecore-89034cbb}
+HERE=$(cd "$(dirname "$0")" && pwd)
+
+# The pinned EDK2 core predates the MdePkg FDT API the UniXNU modules use.
+# The overlay is idempotent and touches nothing else in the core.
+ROOT="$ROOT" MU_BASECORE="$MU_BASECORE" "$HERE/apply-edk2-unixnu-overlay.sh"
 
 export PATH="$TOOLCHAIN/bin:$PATH"
 export CROSS_COMPILE="aarch64-none-linux-gnu-"
@@ -25,6 +32,9 @@ export WORKSPACE="$ROOT/workspace"
 export CONF_PATH="$WORKSPACE/Conf"
 export EDK_TOOLS_PATH="$ROOT/Common/edk2/BaseTools"
 export PACKAGES_PATH="$ROOT/Common/edk2:$ROOT/Common/edk2-platforms:$ROOT/GPLDrivers/Library/simple-init:$ROOT"
+# The UniXNU boot manager and the DarwinBoot loader are vendored read-only
+# packages outside this tree; PACKAGES_PATH is what makes their INFs visible.
+export PACKAGES_PATH="$PACKAGES_PATH:$UNIXNU_SRC/package:$UNIXNU_SRC/drivers/DarwinBoot"
 export PYTHON_COMMAND=python3
 
 mkdir -p "$WORKSPACE" "$CONF_PATH"

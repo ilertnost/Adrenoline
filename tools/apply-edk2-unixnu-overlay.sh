@@ -244,34 +244,44 @@ if not re.search(r'^\s*ArmPkg/ArmPkg\.dec\s*$', text, re.M):
     text = text.replace(anchor, anchor + block, 1)
     changed.append('[Packages] ArmPkg')
 
-components = [
-    ('UniXNUPkg/Driver/UniXNURamDiskDxe/UniXNURamDiskDxe.inf',
-     'UniXNURamDiskDxe calls FdtCheckHeader().'),
-    ('UniXNUPkg/Application/UniXNU/UniXNU.inf',
-     'UniXNULib is linked into this application and uses the MdePkg API.'),
-]
+MODULES = '''
+#
+# UniXNU boot manager + DarwinBoot XNU loader.
+#
+# Both packages live outside this tree (unixnu-src) and are resolved through
+# PACKAGES_PATH, see tools/build-sagit-edk2.sh in Adrenoline.
+#
+[LibraryClasses.common]
+  UniXNULib|UniXNUPkg/Library/UniXNULib/UniXNULib.inf
 
-for inf, why in components:
-    if re.search(r'^[ \t]*' + re.escape(inf) + r'[ \t]*\{', text, re.M):
-        continue
-    pattern = re.compile(r'^(?P<indent>[ \t]*)' + re.escape(inf) + r'[ \t]*$', re.M)
-    m = pattern.search(text)
-    if not m:
-        sys.exit('%s: component not found: %s' % (path, inf))
-    indent = m.group('indent')
-    block = (
-        indent + inf + ' {\n'
-        + indent + '  <LibraryClasses>\n'
-        + indent + '    #\n'
-        + indent + '    # ' + why + '\n'
-        + indent + "    # The platform default FdtLib is EmbeddedPkg's lowercase libfdt;\n"
-        + indent + '    # this build unit uses the MdePkg/BaseFdtLib API.\n'
-        + indent + '    #\n'
-        + indent + '    FdtLib|MdePkg/Library/BaseFdtLib/BaseFdtLib.inf\n'
-        + indent + '}'
-    )
-    text = text[:m.start()] + block + text[m.end():]
-    changed.append(inf)
+[Components.common]
+  UniXNUPkg/Driver/UniXNUDxe/UniXNUDxe.inf
+  UniXNUPkg/Driver/UniXNURamDiskDxe/UniXNURamDiskDxe.inf {
+    <LibraryClasses>
+      #
+      # UniXNURamDiskDxe calls FdtCheckHeader().
+      # The platform default FdtLib is EmbeddedPkg's lowercase libfdt;
+      # this build unit uses the MdePkg/BaseFdtLib API.
+      #
+      FdtLib|MdePkg/Library/BaseFdtLib/BaseFdtLib.inf
+  }
+  UniXNUPkg/Application/UniXNU/UniXNU.inf {
+    <LibraryClasses>
+      #
+      # UniXNULib is linked into this application and uses the MdePkg API.
+      # The platform default FdtLib is EmbeddedPkg's lowercase libfdt;
+      # this build unit uses the MdePkg/BaseFdtLib API.
+      #
+      FdtLib|MdePkg/Library/BaseFdtLib/BaseFdtLib.inf
+  }
+  DarwinBootPkg/Driver/DarwinBoot.inf
+'''
+
+if 'UniXNUPkg/Driver/UniXNUDxe' not in text:
+    if not text.endswith('\n'):
+        text += '\n'
+    text += MODULES
+    changed.append('UniXNULib + the four UniXNU/DarwinBoot modules')
 
 if changed:
     with open(path, 'w', encoding='utf-8', newline='') as f:
@@ -280,6 +290,44 @@ if changed:
           % ', '.join(changed))
 else:
     print('unchanged Platforms/Msm8998Pkg/Device/xiaomi/sagit/sagit.dsc')
+PY
+
+# ---------------------------------------------------------------------------
+# 5. sagit.fdf: put the four modules into the main firmware volume
+# ---------------------------------------------------------------------------
+python3 - "$ROOT/Platforms/Msm8998Pkg/Device/xiaomi/sagit/sagit.fdf" <<'PY'
+import sys
+
+path = sys.argv[1]
+with open(path, encoding='utf-8', newline='') as f:
+    text = f.read()
+
+if 'UniXNUPkg/Driver/UniXNUDxe' in text:
+    print('unchanged sagit.fdf')
+    sys.exit(0)
+
+anchor = '  # INF src/kernelfdt/KernelFdtDxe.inf\n'
+if anchor not in text:
+    sys.exit('%s: FDF anchor not found' % path)
+
+block = (
+    '\n'
+    '  #\n'
+    '  # UniXNU boot manager and DarwinBoot XNU loader. UniXNUDxe registers the\n'
+    '  # UniXNU application (same FV) as the first Boot#### option; DarwinBoot\n'
+    '  # produces gUniXNULoaderProtocolGuid; UniXNURamDiskDxe publishes a ramdisk\n'
+    '  # handed over in the FDT.\n'
+    '  #\n'
+    '  INF UniXNUPkg/Driver/UniXNUDxe/UniXNUDxe.inf\n'
+    '  INF UniXNUPkg/Driver/UniXNURamDiskDxe/UniXNURamDiskDxe.inf\n'
+    '  INF UniXNUPkg/Application/UniXNU/UniXNU.inf\n'
+    '  INF DarwinBootPkg/Driver/DarwinBoot.inf\n'
+)
+
+text = text.replace(anchor, anchor + block, 1)
+with open(path, 'w', encoding='utf-8', newline='') as f:
+    f.write(text)
+print('patched  Platforms/Msm8998Pkg/Device/xiaomi/sagit/sagit.fdf')
 PY
 
 printf '== done: %d added, %d updated, %d unchanged\n' "$ADDED" "$UPDATED" "$UNCHANGED"
