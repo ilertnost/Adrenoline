@@ -23,8 +23,8 @@ Only with an explicit, compatible licence, and only with attribution retained:
 | freedreno kernel tree | MIT | reuse, keep notice |
 | Apple open source (XNU, IOKit headers) | APSL-2.0 | reuse per APSL terms |
 | LLVM | Apache-2.0 WITH LLVM-exception | reuse |
-| UniXNU and its generic components (build driver, toolchain, `ArmDTPlatform`, `ArmCpu`, `RamBlock`, `DarwinBoot`) | BSD-2-Clause-Patent | reuse, keep notice; see ADR-0004 |
-| `AdrenolinePkg` (firmware drivers inside the EDK2 image) | GPL-3.0-or-later | ours |
+| UniXNU and its generic components (build driver, toolchain, `ArmDTPlatform`, `ArmCpu`, `RamBlock`, `DarwinBoot`) | BSD-2-Clause-Patent | reuse, keep notice; see unixnu-sagit `docs/ADR-0004-xnu-base.md` |
+| `unixnu-sagit` (EDK2 firmware drivers and boot-chain tooling, separate repository) | GPL-3.0-or-later | ours |
 | UniXNU device repositories (`chiron`, `cheeseburger`, ...) | per-repository | **reference only** — our board files are ours |
 | Qualcomm published kernel sources | GPL-2.0-only | **reference only** |
 
