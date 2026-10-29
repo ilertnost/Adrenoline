@@ -120,21 +120,26 @@ an official Mi 6 fastboot ROM; it has to be on hand before the first write.
 ## Where this leaves the chain
 
 The firmware boots, the platform is upstream, and the image is reproducible.
-Inside the main firmware volume now sit four modules from UniXNU
-(BSD-2-Clause-Patent, read-only inputs):
+Inside the main firmware volume now sit five modules: four from UniXNU
+(BSD-2-Clause-Patent, read-only inputs) and one of ours.
 
-| module | role |
-|---|---|
-| `UniXNUDxe` | boot manager: registers the UniXNU application as the first boot option |
-| `UniXNU` | the menu application and the configuration it reads |
-| `UniXNURamDiskDxe` | publishes a ramdisk handed over in the device tree |
-| `DarwinBoot` | produces `gUniXNULoaderProtocolGuid` and loads a prelinked XNU Mach-O |
+| module | licence | role |
+|---|---|---|
+| `UniXNUDxe` | BSD-2-Clause-Patent | boot manager: registers the UniXNU application as the first boot option |
+| `UniXNU` | BSD-2-Clause-Patent | the menu application and the configuration it reads |
+| `DarwinBoot` | BSD-2-Clause-Patent | produces `gUniXNULoaderProtocolGuid` and loads an XNU Mach-O |
+| `AdrenolineRamDiskDxe` | GPL-3.0-or-later | publishes the bootloader-placed payload volume as a block device |
+| `AdrenolinePkg` (DEC) | GPL-3.0-or-later | token space and PCDs for the module above |
 
-Sizes on the integrated image: FD unchanged at 6 291 456 B, the compressed
-volume at 5 649 408 of 6 258 688 (609 280 B free), and the boot image at
-11 104 256 B with the same `ANDROID!` v1, 2048-byte page and `0x10000000` kernel
-address as before.
+`UniXNURamDiskDxe` is deliberately **not** used. It reads the initrd bounds from
+a Mu-Silicium SEC handoff HOB (`DAEE82E6-8090-4E72-…`) that this EDK2 port never
+creates, so on this firmware it does nothing but print an error. Ours reads the
+same bounds from the device tree instead: `edk2-msm8998` stores the pointer ABL
+passes in `x0` at `PcdFdtStoreAddress`, ABL writes `linux,initrd-start` and
+`linux,initrd-end` into `/chosen` when the boot image carries a ramdisk, and
+that is all the driver needs. See [FIRMWARE-PAYLOAD.md](FIRMWARE-PAYLOAD.md).
 
-What is still missing between this and a running XNU is the part that has to be
-ours: the configuration entry that points DarwinBoot at our kernel, and the
-device tree it hands over.
+Sizes: FD unchanged at 6 291 456 B, the compressed volume at 5 648 280 of
+6 258 688 (610 408 B free). Without a payload the boot image is 11 104 256 B,
+`ANDROID!` v1, 2048-byte page, kernel at `0x10000000`; with the payload it is
+36 270 080 B and the ramdisk is at `0xE0000000`.

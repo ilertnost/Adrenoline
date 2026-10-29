@@ -19,6 +19,7 @@ MODE=${MODE:-RELEASE}
 UNIXNU_SRC=${UNIXNU_SRC:-/data/opencode/unixnu-src}
 MU_BASECORE=${MU_BASECORE:-$UNIXNU_SRC/out/feeds/mu_basecore-89034cbb}
 HERE=$(cd "$(dirname "$0")" && pwd)
+ADRENOLINE=$(cd "$HERE/.." && pwd)
 
 # The pinned EDK2 core predates the MdePkg FDT API the UniXNU modules use.
 # The overlay is idempotent and touches nothing else in the core.
@@ -35,6 +36,8 @@ export PACKAGES_PATH="$ROOT/Common/edk2:$ROOT/Common/edk2-platforms:$ROOT/GPLDri
 # The UniXNU boot manager and the DarwinBoot loader are vendored read-only
 # packages outside this tree; PACKAGES_PATH is what makes their INFs visible.
 export PACKAGES_PATH="$PACKAGES_PATH:$UNIXNU_SRC/package:$UNIXNU_SRC/drivers/DarwinBoot"
+# AdrenolinePkg holds the firmware pieces that are ours (GPL-3.0-or-later).
+export PACKAGES_PATH="$PACKAGES_PATH:$ADRENOLINE/firmware"
 export PYTHON_COMMAND=python3
 
 mkdir -p "$WORKSPACE" "$CONF_PATH"
@@ -83,18 +86,38 @@ echo "== package =="
 OUT="$WORKSPACE/out"
 mkdir -p "$OUT"
 DTB="Platforms/Msm8998Pkg/Device/xiaomi/${DEVICE}/DeviceTreeBlob/Android/Android-${DEVICE}.dtb"
-: > "$WORKSPACE/ramdisk"
+
+# The UniXNU payload volume (tools/mksagit-payload.py) goes in as the Android
+# ramdisk. ABL copies it to the address in the header and patches
+# linux,initrd-start/end into the device tree; AdrenolineRamDiskDxe turns it
+# back into a block device. Without PAYLOAD the image boots to the shell.
+PAYLOAD=${PAYLOAD:-}
+if [ -n "$PAYLOAD" ]; then
+  [ -f "$PAYLOAD" ] || { echo "payload not found: $PAYLOAD" >&2; exit 1; }
+  RAMDISK="$PAYLOAD"
+else
+  : > "$WORKSPACE/ramdisk"
+  RAMDISK="$WORKSPACE/ramdisk"
+fi
+
 gzip -c "$FV" > "$OUT/uefi-${DEVICE}.img.gz"
 cat "$OUT/uefi-${DEVICE}.img.gz" "$DTB" > "$OUT/uefi-${DEVICE}.img.gz-dtb"
+# Addresses are spelled out with base 0: kernel and tags at 0x10000000 (the
+# values this bootloader has been booting since the first flash), the payload
+# at 0xE0000000, which is inside DRAM and far above the firmware's own copy at
+# 0xD0000000.
 python3 ./mkbootimg.py \
   --kernel "$OUT/uefi-${DEVICE}.img.gz-dtb" \
-  --ramdisk "$WORKSPACE/ramdisk" \
-  --kernel_offset 0x00000000 \
-  --ramdisk_offset 0x00000000 \
-  --tags_offset 0x00000000 \
+  --ramdisk "$RAMDISK" \
+  --base 0x00000000 \
+  --kernel_offset 0x10000000 \
+  --ramdisk_offset ${RAMDISK_OFFSET:-0xE0000000} \
+  --tags_offset 0x10000000 \
   --os_version 12.0.0 \
   --os_patch_level 2022-08 \
   --header_version 1 \
   -o "$OUT/boot-${DEVICE}.img"
+
+ls -la "$OUT/boot-${DEVICE}.img"
 
 ls -la "$OUT/boot-${DEVICE}.img"

@@ -256,15 +256,10 @@ MODULES = '''
 
 [Components.common]
   UniXNUPkg/Driver/UniXNUDxe/UniXNUDxe.inf
-  UniXNUPkg/Driver/UniXNURamDiskDxe/UniXNURamDiskDxe.inf {
-    <LibraryClasses>
-      #
-      # UniXNURamDiskDxe calls FdtCheckHeader().
-      # The platform default FdtLib is EmbeddedPkg's lowercase libfdt;
-      # this build unit uses the MdePkg/BaseFdtLib API.
-      #
-      FdtLib|MdePkg/Library/BaseFdtLib/BaseFdtLib.inf
-  }
+  # UniXNURamDiskDxe is not used: it reads the initrd bounds from a Mu-Silicium
+  # SEC handoff HOB that this EDK2 port does not create. AdrenolineRamDiskDxe
+  # publishes the same ramdisk from the device tree instead.
+  AdrenolinePkg/Drivers/RamDiskDxe/RamDiskDxe.inf
   UniXNUPkg/Application/UniXNU/UniXNU.inf {
     <LibraryClasses>
       #
@@ -319,7 +314,7 @@ block = (
     '  # handed over in the FDT.\n'
     '  #\n'
     '  INF UniXNUPkg/Driver/UniXNUDxe/UniXNUDxe.inf\n'
-    '  INF UniXNUPkg/Driver/UniXNURamDiskDxe/UniXNURamDiskDxe.inf\n'
+    '  INF AdrenolinePkg/Drivers/RamDiskDxe/RamDiskDxe.inf\n'
     '  INF UniXNUPkg/Application/UniXNU/UniXNU.inf\n'
     '  INF DarwinBootPkg/Driver/DarwinBoot.inf\n'
 )
