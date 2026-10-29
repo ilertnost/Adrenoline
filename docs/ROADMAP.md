@@ -2,6 +2,15 @@
 
 Ordered by what unblocks the most work per unit of effort.
 
+## M-1 — boot chain
+
+- [x] EDK2 `boot-sagit.img` reproducible from source, boots on hardware
+- [x] XNU 8796-branch builds and links for sagit (`docs/XNU-SAGIT.md`)
+- [ ] UniXNU boot manager + DarwinBoot inside the EDK2 image (ADR-0005 stage 1)
+- [ ] Hand the kernel the device tree and the restore ramdisk in RAM
+- [ ] First kernel boot on hardware
+- [ ] Mu-Silicium firmware with SPMI/PMIC, clocks and CPU DVFS (ADR-0005 stage 2)
+
 ## M0 — seam and contract
 
 - [x] Public backend vtable and device caps
