@@ -19,6 +19,13 @@ archives = [
   "build-libpthread-kernel.py",
   "build-corecrypto-14.py",
   "build-corecrypto-14.py --namespace",
+  # ARM_DT_PLATFORM and ARMCPU are drivers, and in a format-1 profile a driver
+  # is not built from its component entry: the link then fails on a missing
+  # libArmDTPlatform.a. build-arm-driver.py is the builder the format-2
+  # catalog names, used here directly.
+  "build-arm-driver.py ArmDTPlatform",
+  "build-arm-driver.py ArmCpu",
+  "build-arm-driver.py RamBlock",
   "build-mockfs-fixture.py",
 ]
 

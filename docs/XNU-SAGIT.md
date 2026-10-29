@@ -88,10 +88,60 @@ Apple's prelinked components. No storage, no display, no GPU.
 ## Build
 
 ```sh
-./unixnu defconfig sagit -D /data/opencode/Adrenoline/xnu/sagit
+tools/build-xnu-sagit.sh
+```
+
+which is, in full:
+
+```sh
+export TMPDIR=/data/opencode/tmp UNIXNU_TOOLCHAIN=/data/opencode/unixnu-toolchain
+cd /data/opencode/unixnu-src
+./unixnu defconfig sagit_defconfig -D /data/opencode/Adrenoline/xnu/sagit
 ./unixnu fetch
 ./unixnu build kernel
 ```
+
+`defconfig` takes the config file name, not the board name. The first build
+from scratch runs one pass that compiles everything and is expected to stop at
+the link: the archive builders read the compile records that pass leaves
+behind, so there is nothing to read on a fresh tree.
+
+### What has to be named explicitly
+
+A format-1 profile does not build drivers from their component entries. Two
+switches decide what happens between the bootstrap pass and the final link:
+
+- `[kernel] archives` in `board.toml` — the ordered list of builders.
+- `CONFIG_XNU_BUILD_ARCHIVES=y` in the defconfig — without it the list is not
+  read at all.
+
+The order matters: the namespaced corecrypto pass consumes the plain one, and
+`build-arm-driver.py` produces the platform expert, CPU provider and RAM block
+that `ARM_DT_PLATFORM`, `ARMCPU` and `RAM_BLOCK` expect at link time. Names in
+`archives` are scripts of the build tree plus their arguments.
+
+### Result of the first complete build
+
+```
+mach.development.bcm2837.unstripped.noctf
+  18 388 888 bytes
+  sha256 73bef02088a2ec0335f6b85a36aafa0d640c812576094fa6f495e641b24bd8b7
+  Mach-O 64-bit arm64, NOUNDEFS|PIE, minos 17.0
+  __TEXT at 0xfffffff007004000, 48 512 exported symbols
+  _corecrypto_kext_start and _mockfs_mountroot resolved
+```
+
+`NOUNDEFS` is the part that matters: the four symbols that the bootstrap pass
+could not find are now supplied by the source crypto, the pthread archive and
+the mockfs fixture.
+
+### One patch to the driver
+
+`build kernel` used to call `kernel.prelink` unconditionally, and a source-only
+board has no `[kernel.prelink]`, so a successful link ended with a failed build
+and a non-zero exit. `patches/0003-unixnu-prelink-when-specified.patch` makes
+the prelink step conditional on the board asking for it. `tools/build-xnu-sagit.sh`
+applies it idempotently.
 
 ## Open questions
 
