@@ -8,6 +8,13 @@ Adreno hardware that upstream Mesa does not support. **Turnip is a6xx+ only**,
 so there is no Vulkan path for a5xx. Adrenoline therefore does not use Vulkan
 at all, and does not use SPIR-V.
 
+## Scope
+
+Adrenoline is the graphics side only: Metal frontend, NIR, the a5xx backends
+and the XNU GPU driver. The device-specific boot chain that brings XNU up on
+the Mi 6 (EDK2 firmware, UniXNU/DarwinBoot, ADT, payload, device tree) lives in
+a separate repository: <https://github.com/ilertnost/unixnu-sagit>.
+
 ## The one decision that matters
 
 **NIR is the interchange format. Nothing else.**

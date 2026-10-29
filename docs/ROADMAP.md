@@ -2,14 +2,12 @@
 
 Ordered by what unblocks the most work per unit of effort.
 
-## M-1 — boot chain
+## M-1 — boot chain (moved)
 
-- [x] EDK2 `boot-sagit.img` reproducible from source, boots on hardware
-- [x] XNU 8796-branch builds and links for sagit (`docs/XNU-SAGIT.md`)
-- [ ] UniXNU boot manager + DarwinBoot inside the EDK2 image (ADR-0005 stage 1)
-- [ ] Hand the kernel the device tree and the restore ramdisk in RAM
-- [ ] First kernel boot on hardware
-- [ ] Mu-Silicium firmware with SPMI/PMIC, clocks and CPU DVFS (ADR-0005 stage 2)
+The boot chain is a separate project: **unixnu-sagit**
+(<https://github.com/ilertnost/unixnu-sagit>) — EDK2 firmware pieces, payload,
+ADT, device tree and the XNU build for sagit. This repository only consumes the
+resulting XNU.
 
 ## M0 — seam and contract
 

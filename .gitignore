@@ -6,3 +6,6 @@ build/
 .cache/
 compile_commands.json
 tests/ref/*.bin
+
+# build artifacts
+out/
