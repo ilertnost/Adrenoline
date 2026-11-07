@@ -15,6 +15,11 @@ and the XNU GPU driver. The device-specific boot chain that brings XNU up on
 the Mi 6 (EDK2 firmware, UniXNU/DarwinBoot, ADT, payload, device tree) lives in
 a separate repository: <https://github.com/ilertnost/unixnu-sagit>.
 
+The boundary is a decision, not a side effect: **everything that talks to the
+GPU is here, including the IOKit driver**, while `unixnu-sagit` keeps the boot
+chain and at most basic software rendering into the framebuffer
+(`docs/ADR-0003-repository-boundary.md`).
+
 ## The one decision that matters
 
 **NIR is the interchange format. Nothing else.**

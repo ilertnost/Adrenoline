@@ -9,6 +9,11 @@ The boot chain is a separate project: **unixnu-sagit**
 ADT, device tree and the XNU build for sagit. This repository only consumes the
 resulting XNU.
 
+The reverse direction is equally closed: the GPU driver and every other piece
+that programs Adreno live here, and `unixnu-sagit` keeps none of it — at most a
+software renderer that writes pixels into the framebuffer for bring-up. See
+`docs/ADR-0003-repository-boundary.md`.
+
 ## M0 — seam and contract
 
 - [x] Public backend vtable and device caps
