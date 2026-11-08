@@ -127,11 +127,23 @@ int main(void)
     al_home_touch(home, 540, 900, false, 5050);
     expect(&sink, NULL, 0, "tap outside band ignored");
 
-    /* A drag is not a tap. */
+    /* A drag is not a tap, in either direction on either axis. */
     sink_reset(&sink);
     al_home_touch(home, 540, 1850, true, 6000);
     al_home_touch(home, 700, 1850, false, 6050);
-    expect(&sink, NULL, 0, "drag ignored");
+    expect(&sink, NULL, 0, "drag right ignored");
+
+    al_home_touch(home, 540, 1850, true, 6100);
+    al_home_touch(home, 380, 1850, false, 6150);
+    expect(&sink, NULL, 0, "drag left ignored");
+
+    al_home_touch(home, 540, 1850, true, 6200);
+    al_home_touch(home, 540, 1700, false, 6250);
+    expect(&sink, NULL, 0, "drag up ignored");
+
+    al_home_touch(home, 540, 1800, true, 6300);
+    al_home_touch(home, 540, 1910, false, 6350);
+    expect(&sink, NULL, 0, "drag down ignored");
 
     /* A hold past the tap limit is not a tap. */
     sink_reset(&sink);

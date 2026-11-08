@@ -162,10 +162,13 @@ enum al_status al_home_touch(struct al_home *home, uint32_t x, uint32_t y,
     }
 
     /* A release outside the band, after too long, or after a drag is not a tap. */
+    const uint32_t dx = x >= home->touch_x ? x - home->touch_x
+                                           : home->touch_x - x;
+    const uint32_t dy = y >= home->touch_y ? y - home->touch_y
+                                           : home->touch_y - y;
     if (home->touch_down && in_band &&
         now_ms - home->touch_at <= home->cfg.tap_max_ms &&
-        x >= home->touch_x && x - home->touch_x <= home->cfg.tap_slop_px &&
-        y >= home->touch_y && y - home->touch_y <= home->cfg.tap_slop_px) {
+        dx <= home->cfg.tap_slop_px && dy <= home->cfg.tap_slop_px) {
         press(home, now_ms);
         release(home, now_ms);
     }
