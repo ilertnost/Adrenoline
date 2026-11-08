@@ -51,19 +51,20 @@ static void emit_state(struct al_home *home)
     home->emit(home->user, &report);
 }
 
-static void press(struct al_home *home, uint64_t now_ms)
+static bool press(struct al_home *home, uint64_t now_ms)
 {
     if (home->pressed) {
-        return; /* duplicate notification, not a second click */
+        return false; /* duplicate notification, not a second click */
     }
 
     if (home->have_released && now_ms - home->released_at < home->cfg.repeat_ms) {
-        return; /* contact bounce */
+        return false; /* contact bounce */
     }
 
     home->pressed = true;
     home->pressed_at = now_ms;
     emit_state(home);
+    return true;
 }
 
 static void release(struct al_home *home, uint64_t now_ms)
@@ -169,8 +170,10 @@ enum al_status al_home_touch(struct al_home *home, uint32_t x, uint32_t y,
     if (home->touch_down && in_band &&
         now_ms - home->touch_at <= home->cfg.tap_max_ms &&
         dx <= home->cfg.tap_slop_px && dy <= home->cfg.tap_slop_px) {
-        press(home, now_ms);
-        release(home, now_ms);
+        /* Release only the tap's own press: an already-held key must survive. */
+        if (press(home, now_ms)) {
+            release(home, now_ms);
+        }
     }
 
     home->touch_down = false;

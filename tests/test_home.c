@@ -127,6 +127,22 @@ int main(void)
     al_home_touch(home, 540, 900, false, 5050);
     expect(&sink, NULL, 0, "tap outside band ignored");
 
+    /* A tap while the physical key is held must not release the key. */
+    sink_reset(&sink);
+    al_home_key(home, true, 5200);
+    al_home_touch(home, 540, 1850, true, 5250);
+    al_home_touch(home, 540, 1850, false, 5300);
+    {
+        const uint8_t want[] = { 1 };
+        expect(&sink, want, 1, "tap does not release a held key");
+    }
+    check(al_home_is_pressed(home), "key still pressed after tap");
+    al_home_key(home, false, 5400);
+    {
+        const uint8_t want[] = { 1, 0 };
+        expect(&sink, want, 2, "held key releases normally after tap");
+    }
+
     /* A drag is not a tap, in either direction on either axis. */
     sink_reset(&sink);
     al_home_touch(home, 540, 1850, true, 6000);
